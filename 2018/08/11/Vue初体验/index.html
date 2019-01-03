@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Vue,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。Vue.js2.x教程 本文假设你已经掌握了Vue.js的基础知识下面">
+<meta name="keywords" content="Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue搭建第一个项目">
+<meta property="og:url" content="http://rosesnow.top/2018/08/11/Vue初体验/index.html">
+<meta property="og:site_name" content="枪在手，跟我走">
+<meta property="og:description" content="前言 Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。Vue.js2.x教程 本文假设你已经掌握了Vue.js的基础知识下面">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-14T02:21:03.018Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue搭建第一个项目">
+<meta name="twitter:description" content="前言 Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。Vue.js2.x教程 本文假设你已经掌握了Vue.js的基础知识下面">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://rosesnow.top/2018/08/11/Vue初体验/">
+
+
+
+
+
+  <title>Vue搭建第一个项目 | 枪在手，跟我走</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/RoseSnow" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">枪在手，跟我走</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">初极狭，才通人，复行数十步，豁然开朗</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user 表示关于我"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            生活
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rosesnow.top/2018/08/11/Vue初体验/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RoseSnow">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枪在手，跟我走">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue搭建第一个项目</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-11T12:10:07+08:00">
+                2018-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。<a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener"><strong>Vue.js2.x教程</strong></a> 本文假设你已经掌握了Vue.js的基础知识下面开始进入项目</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><blockquote>
+<p>首先是环境的搭建，确保电脑安装了<a href="https://www.webpackjs.com/concepts/&quot;点我&quot;" target="_blank" rel="noopener"><strong>webpack</strong></a>，<a href="http://nodejs.cn/&quot;点我&quot;" target="_blank" rel="noopener"><strong>node.js</strong></a> ;可以使用官方提供vue-cli脚手架工具搭建项目架构，通过<code>npm i vue-cli -g</code>命令在全局范围内安装[建议以管理员身份安装]；之后创建一个基于webpack模板的项目，通过<code>vue init webpack mydemo</code>命令创建，其中’mademo’是项目的名称，等待创建；创建完毕进入mydemo项目文件，先安装依赖，通过<code>npm i</code>命令进行安装；安装完毕后通过<code>npm run dev</code>命令运行项目；后期会有一个更详细的环境配置以及项目创建的文章，<br><a href="https://github.com/RoseSnow/Vue-demo" target="_blank" rel="noopener"><strong>点我查看项目github源码</strong></a></p>
+</blockquote>
+<h2 id="制作首页APP组件"><a href="#制作首页APP组件" class="headerlink" title="制作首页APP组件"></a>制作首页APP组件</h2><ol>
+<li>完成 Header 区域，使用的是 Mint-UI 中的Header组件</li>
+<li><p>制作底部的 Tabbar 区域，使用的是 MUI 中的 Tabbar.html</p>
+<ul>
+<li>在制作 购物车 小图标的时候，操作会相对复杂一些；</li>
+<li>先把扩展图标的 css 样式，拷贝到项目中；</li>
+<li>再把扩展字体库 ttf 文件，拷贝到项目中；</li>
+<li>为购物车小图标添加如下样式:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mui-icon mui-icon-extra mui-icon-extra-cart</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>在中间区域放置一个 router-view 来展示路由匹配到的组件</p>
+</li>
+</ol>
+<h2 id="改造-Tabbar-为-router-link"><a href="#改造-Tabbar-为-router-link" class="headerlink" title="改造 Tabbar 为 router-link"></a>改造 Tabbar 为 router-link</h2><ul>
+<li>把Tabbar中的 a标签全部更换成 router-link</li>
+</ul>
+<h2 id="设置路由高亮"><a href="#设置路由高亮" class="headerlink" title="设置路由高亮"></a>设置路由高亮</h2><blockquote>
+<p>linkActiveClass: ‘mui-active’ // 覆盖默认的路由高亮的类，默认的类叫做 router-link-active[通过开发者模式调试代码可找到]</p>
+</blockquote>
+<h2 id="点击-Tabbar-中的路由链接，展示对应的路由组件"><a href="#点击-Tabbar-中的路由链接，展示对应的路由组件" class="headerlink" title="点击 Tabbar 中的路由链接，展示对应的路由组件"></a>点击 Tabbar 中的路由链接，展示对应的路由组件</h2><ol>
+<li>在项目src文件夹下创建 components 文件夹 并在该文件下创建 tabbar 文件夹</li>
+<li>在 tabbar 文件夹下依次创建HomeContaniner.vue[首页], SearchContaniner.vue[搜索], ShopcarContainer.vue[购物车], MineContaniner.vue[我的] 四个组件</li>
+<li>在router.js 中导入以上四个组件： <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> HomeContainer <span class="keyword">from</span><span class="string">'./components/tabbar/HomeContaniner.vue'</span>;</span><br><span class="line"><span class="keyword">import</span> SearchContainer <span class="keyword">from</span> <span class="string">'./components/tabbar/SearchContainer.vue'</span>;</span><br><span class="line"><span class="keyword">import</span> ShopcarContainer <span class="keyword">from</span> <span class="string">'./components/tabbar/ShopcarContainer.vue'</span>;</span><br><span class="line"><span class="keyword">import</span> MineContainer <span class="keyword">from</span> <span class="string">'./components/tabbar/MineContainer.vue'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li><p>添加路由匹配规则：</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">path</span>: <span class="string">'/home'</span>, <span class="attr">component</span>: HomeContainer &#125;,</span><br><span class="line">&#123; <span class="attr">path</span>: <span class="string">'/search'</span>, <span class="attr">component</span>: SearchContainer &#125;,</span><br><span class="line">&#123; <span class="attr">path</span>: <span class="string">'/shopcar'</span>, <span class="attr">component</span>: ShopcarContainer &#125;,</span><br><span class="line">&#123; <span class="attr">path</span>: <span class="string">'/mine'</span>, <span class="attr">component</span>: MineContainer &#125;,</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="制作首页轮播图布局"><a href="#制作首页轮播图布局" class="headerlink" title="制作首页轮播图布局"></a>制作首页轮播图布局</h2><ul>
+<li>绘制轮播图 用的是 Mint-UI 中的 Swipe,SwipeItem 组件</li>
+<li>引入格式 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Swipe, SwipeItem &#125; <span class="keyword">from</span> <span class="string">'mint-ui'</span>;</span><br><span class="line">Vue.component(Swipe.name, Swipe);</span><br><span class="line">Vue.component(SwipeItem.name, SwipeItem);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="加载首页轮播图数据"><a href="#加载首页轮播图数据" class="headerlink" title="加载首页轮播图数据"></a>加载首页轮播图数据</h2><ol>
+<li>获取数据，使用 vue-resource</li>
+<li>使用 vue-resource 的 this.$http.get 获取数据</li>
+<li>获取到的数据，要保存到 data 身上</li>
+<li>使用 v-for 循环渲染 每个 item 项 </li>
+</ol>
+<h2 id="改造九宫格区域样式"><a href="#改造九宫格区域样式" class="headerlink" title="改造九宫格区域样式"></a>改造九宫格区域样式</h2><ul>
+<li>绘制九宫格界面 用的是 MUI 中的 grid-default.html</li>
+</ul>
+<h2 id="改造新闻资讯路由链接"><a href="#改造新闻资讯路由链接" class="headerlink" title="改造新闻资讯路由链接"></a>改造新闻资讯路由链接</h2><ol>
+<li>九宫格中新闻资讯的 a 标签 更改为 router—link</li>
+<li>创建新闻资讯的组件页面 NewsList.vue</li>
+</ol>
+<h2 id="新闻资讯页面制作"><a href="#新闻资讯页面制作" class="headerlink" title="新闻资讯页面制作"></a>新闻资讯页面制作</h2><ol>
+<li>绘制界面，使用 MUI 中的 media-list.html</li>
+<li>使用 vue-resource 获取数据</li>
+<li>渲染真实数据</li>
+</ol>
+<h2 id="实现新闻咨询列表-点击跳转到新闻详情"><a href="#实现新闻咨询列表-点击跳转到新闻详情" class="headerlink" title="实现新闻咨询列表 点击跳转到新闻详情"></a>实现新闻咨询列表 点击跳转到新闻详情</h2><ol>
+<li>把列表中的每一项改造为 router-link 同时 在跳转的时候应该提供唯一的ID标识符</li>
+<li>创建新闻详情的组件页面 NewsInfo.vue</li>
+<li>在路由模块中 将新闻详情的路由地址和组件页面对应起来</li>
+</ol>
+<h2 id="实现新闻详情的页面布局和数据渲染"><a href="#实现新闻详情的页面布局和数据渲染" class="headerlink" title="实现新闻详情的页面布局和数据渲染"></a>实现新闻详情的页面布局和数据渲染</h2><h2 id="单独封装一个-comment-vue-评论子组件"><a href="#单独封装一个-comment-vue-评论子组件" class="headerlink" title="单独封装一个 comment.vue 评论子组件"></a>单独封装一个 comment.vue 评论子组件</h2><ol>
+<li>先创建一个单独的 comment.vue 组件模板</li>
+<li>在需要使用 comment 组件的页面中 先手动导入 comment组件<ul>
+<li><code>import comment from &#39;./comment.vue&#39;</code></li>
+</ul>
+</li>
+<li>在父组件中 使用  <code>components</code> 属性 将刚才导入的 comment 组件 注册为自己的子组件</li>
+<li>将注册子组件时候的注册名称 以标签的形式在页面中 引用即可</li>
+</ol>
+<h2 id="获取所有的评论数据显示到页面中"><a href="#获取所有的评论数据显示到页面中" class="headerlink" title="获取所有的评论数据显示到页面中"></a>获取所有的评论数据显示到页面中</h2><h2 id="实现点击加载更多评论按钮的功能"><a href="#实现点击加载更多评论按钮的功能" class="headerlink" title="实现点击加载更多评论按钮的功能"></a>实现点击加载更多评论按钮的功能</h2><ol>
+<li>为按钮绑定点击事件， 在事件中 请求下一页的数据</li>
+<li>点击加载更多，让 pageIndex++ ,然后重新调用 this.getComments() 方法重新获取最新一页的数据</li>
+<li>为了防止 新数据覆盖原有数据的情况的发生，在点击加载更多的时候，每当获取到新数据 就应该让原数据调用数组的 concat 方法，拼接上新数组</li>
+</ol>
+<h2 id="实现发表评论"><a href="#实现发表评论" class="headerlink" title="实现发表评论"></a>实现发表评论</h2><ol>
+<li>对文本框做双向数据绑定</li>
+<li>为发表按钮绑定一个事件</li>
+<li>校验评论内容是否为空 若为空 则Toast提示用户 评论内容不能为空</li>
+<li>通过 vue-resource 发送一个请求 把评论内容提交到服务器</li>
+<li>当点击发表后 重新刷新列表 以查看最新的评论<ul>
+<li>这里如果 调用 getComments 方法重新刷评论列表的话 可能只能得到最后一页的评论 而前几页的评论内容获取不到</li>
+<li>所以 这里当评论成功之后 在客户端 手动拼接出一个最新评论对象 然后调用数组的 unshift 方法 把最新的评论内容追加到 data 中 comments 的开头  </li>
+</ul>
+</li>
+</ol>
+<h2 id="改造图片分享按钮为-路由链接并添加对应的组件页面"><a href="#改造图片分享按钮为-路由链接并添加对应的组件页面" class="headerlink" title="改造图片分享按钮为 路由链接并添加对应的组件页面"></a>改造图片分享按钮为 路由链接并添加对应的组件页面</h2><h2 id="绘制-图片分享-组件页面结构并美化样式"><a href="#绘制-图片分享-组件页面结构并美化样式" class="headerlink" title="绘制 图片分享 组件页面结构并美化样式"></a>绘制 图片分享 组件页面结构并美化样式</h2><ol>
+<li>制作顶部滑动条</li>
+<li><p>制作底部图片列表</p>
+<h3 id="制作顶部滑动条所遇到的问题及解决办法"><a href="#制作顶部滑动条所遇到的问题及解决办法" class="headerlink" title="制作顶部滑动条所遇到的问题及解决办法"></a>制作顶部滑动条所遇到的问题及解决办法</h3><ol>
+<li>滑动条用的是 MUI 中的 tab-top-weview-main.html</li>
+<li>注意：需要把 slider 区域的 mui-fullscreen 类去掉</li>
+<li>滑动条无法正常触发滑动 通过检查官方文档 发现这是JS组件 需要被初始化一下；</li>
+</ol>
+<ul>
+<li>导入 mui.js</li>
+<li>调用官方提供的方式初始化：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mui(<span class="string">'.mui-scroll-wrapper'</span>).scroll(&#123;</span><br><span class="line">  deceleration: <span class="number">0.0005</span> <span class="comment">// flick 减速系数 系数越大 滚动速度越慢 滚动距离越小 默认值0.0006</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="4">
+<li>在初始化滑动条的时候 导入的 mui,js 但是控制台报错 </li>
+</ol>
+<ul>
+<li>经过分析可能是 mui.js 中用到了非严格的东西 而webpack打包好的 bundel.js 中 默认的是启用严格模式的 所以两者冲突了</li>
+<li>解决办法 移除严格模式：使用这个插件<br>babel-plugin-transform-remove-strict-mode  </li>
+</ul>
+<ol start="5">
+<li>在刚进入图片分享界面时 滑动条无法正常工作 原因是 初始化滑动条 必须等 DOM 元素加载完毕后才可以 所以 解决办法是把 初始化滑动条的代码 放在 mounted 生命周期函数中去；</li>
+<li>当滑动条调试好之后 出现了新的问题[tabbar无法正常工作了] 解决方法：把APP.vue中tabbar的每个 tabbar按钮样式中的 <code>mui-tab-item</code> 重新改一下名字（这里我把它改做了 ‘mui-tab-item-rs’ ）</li>
+<li>获取所有分类 并渲染分类列表</li>
+</ol>
+</li>
+</ol>
+<h2 id="制作图片列表区域"><a href="#制作图片列表区域" class="headerlink" title="制作图片列表区域"></a>制作图片列表区域</h2><ol>
+<li>图片列表需要懒加载技术 可以使用 Mint-UI 提供的组件 ‘lazy-load’</li>
+<li>渲染图片列表</li>
+</ol>
+<h2 id="实现图片列表的懒加载改造和样式美化"><a href="#实现图片列表的懒加载改造和样式美化" class="headerlink" title="实现图片列表的懒加载改造和样式美化"></a>实现图片列表的懒加载改造和样式美化</h2><h2 id="实现点击图片-跳转到图片详情页面"><a href="#实现点击图片-跳转到图片详情页面" class="headerlink" title="实现点击图片 跳转到图片详情页面"></a>实现点击图片 跳转到图片详情页面</h2><h2 id="实现详情页的布局和美化-并加载数据渲染页面"><a href="#实现详情页的布局和美化-并加载数据渲染页面" class="headerlink" title="实现详情页的布局和美化 并加载数据渲染页面"></a>实现详情页的布局和美化 并加载数据渲染页面</h2><h2 id="实现-图片详情中的缩略图功能"><a href="#实现-图片详情中的缩略图功能" class="headerlink" title="实现 图片详情中的缩略图功能"></a>实现 图片详情中的缩略图功能</h2><ol>
+<li>使用 vue-preview 这个缩略图插件</li>
+<li>获取到所有图片列表 然后使用 v-for 指令渲染数据</li>
+<li>注意：<ul>
+<li>img标签上的class不能去掉</li>
+<li>每个图片数据对象中 必须要有 width 和 height 属性</li>
+</ul>
+</li>
+</ol>
+<h2 id="绘制商品列表页面基本结构"><a href="#绘制商品列表页面基本结构" class="headerlink" title="绘制商品列表页面基本结构"></a>绘制商品列表页面基本结构</h2><h2 id="如何在手机端-进行项目的预览与测试"><a href="#如何在手机端-进行项目的预览与测试" class="headerlink" title="如何在手机端 进行项目的预览与测试"></a>如何在手机端 进行项目的预览与测试</h2><ol>
+<li>首先确保 手机和开发项目所用的电脑处在同一 WIFI 环境中 即手机可以访问到电脑的IP</li>
+<li>在项目文件 package.json 中 在dev脚本中 添加一个 –host 指令 并把当前电脑的 WIFI IP 地址 设置为 –host 的指令值</li>
+<li>如何查看自己电脑所处 WIFI 的 IP：<ul>
+<li>在cmd终端 键入 ‘ipconfig’ 命令 查看无线网的ip地址</li>
+</ul>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>这篇文章以及这个项目是为了更好的理解Vue，在实践中加深对Vue.js的认知；毋庸置疑，Vue.js是一个很好的前端框架，一起期待Ta更好的未来吧！</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/gongzhonghao.png" alt="RoseSnow wechat" style="width: 200px; max-width: 100%;">
+    <div>扫码关注微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得文章不错，请我吃根辣条吧~~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wxpay.png" alt="RoseSnow 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="RoseSnow 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/08/js实现冒泡排序和快速排序/" rel="next" title="js实现冒泡排序和快速排序">
+                <i class="fa fa-chevron-left"></i> js实现冒泡排序和快速排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/18/CSS3实现经典两列商品布局/" rel="prev" title="CSS3Flex布局之-经典两列商品布局">
+                CSS3Flex布局之-经典两列商品布局 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="RoseSnow">
+            
+              <p class="site-author-name" itemprop="name">RoseSnow</p>
+              <p class="site-description motion-element" itemprop="description">初极狭，才通人，复行数十步，豁然开朗</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RoseSnow" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="number_nine@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="w3school" target="_blank">w3school</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰官网" target="_blank">廖雪峰官网</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作首页APP组件"><span class="nav-text">制作首页APP组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改造-Tabbar-为-router-link"><span class="nav-text">改造 Tabbar 为 router-link</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置路由高亮"><span class="nav-text">设置路由高亮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点击-Tabbar-中的路由链接，展示对应的路由组件"><span class="nav-text">点击 Tabbar 中的路由链接，展示对应的路由组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作首页轮播图布局"><span class="nav-text">制作首页轮播图布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加载首页轮播图数据"><span class="nav-text">加载首页轮播图数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改造九宫格区域样式"><span class="nav-text">改造九宫格区域样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改造新闻资讯路由链接"><span class="nav-text">改造新闻资讯路由链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新闻资讯页面制作"><span class="nav-text">新闻资讯页面制作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现新闻咨询列表-点击跳转到新闻详情"><span class="nav-text">实现新闻咨询列表 点击跳转到新闻详情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现新闻详情的页面布局和数据渲染"><span class="nav-text">实现新闻详情的页面布局和数据渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单独封装一个-comment-vue-评论子组件"><span class="nav-text">单独封装一个 comment.vue 评论子组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取所有的评论数据显示到页面中"><span class="nav-text">获取所有的评论数据显示到页面中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现点击加载更多评论按钮的功能"><span class="nav-text">实现点击加载更多评论按钮的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现发表评论"><span class="nav-text">实现发表评论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改造图片分享按钮为-路由链接并添加对应的组件页面"><span class="nav-text">改造图片分享按钮为 路由链接并添加对应的组件页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制-图片分享-组件页面结构并美化样式"><span class="nav-text">绘制 图片分享 组件页面结构并美化样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#制作顶部滑动条所遇到的问题及解决办法"><span class="nav-text">制作顶部滑动条所遇到的问题及解决办法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作图片列表区域"><span class="nav-text">制作图片列表区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现图片列表的懒加载改造和样式美化"><span class="nav-text">实现图片列表的懒加载改造和样式美化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现点击图片-跳转到图片详情页面"><span class="nav-text">实现点击图片 跳转到图片详情页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现详情页的布局和美化-并加载数据渲染页面"><span class="nav-text">实现详情页的布局和美化 并加载数据渲染页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现-图片详情中的缩略图功能"><span class="nav-text">实现 图片详情中的缩略图功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制商品列表页面基本结构"><span class="nav-text">绘制商品列表页面基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在手机端-进行项目的预览与测试"><span class="nav-text">如何在手机端 进行项目的预览与测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <div class="theme-info">
+      <span class="post-count">本站总字数: 23k</span>
+    </div>
+  
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站阅读量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+</body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</html>

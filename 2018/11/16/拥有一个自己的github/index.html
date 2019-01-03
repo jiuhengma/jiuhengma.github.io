@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Git,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 gitHub是一个面向开源及私有软件项目的托管平台，除了git代码仓库托管及基本的 Web管理界面以外，还提供了订阅、讨论组、文本渲染、在线文件编辑器、协作图谱（报表）、代码片段分享（Gist）等功能。是全球最大的社交编程及代码托管网站，没有之一，所以还没有注册的小伙伴抓紧啦，此文将带你一步一步，从注册到使用，从头到尾体验一番，废话不多说，Let’s do it!">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitHub从注册到使用[详细图文教程]">
+<meta property="og:url" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/index.html">
+<meta property="og:site_name" content="枪在手，跟我走">
+<meta property="og:description" content="前言 gitHub是一个面向开源及私有软件项目的托管平台，除了git代码仓库托管及基本的 Web管理界面以外，还提供了订阅、讨论组、文本渲染、在线文件编辑器、协作图谱（报表）、代码片段分享（Gist）等功能。是全球最大的社交编程及代码托管网站，没有之一，所以还没有注册的小伙伴抓紧啦，此文将带你一步一步，从注册到使用，从头到尾体验一番，废话不多说，Let’s do it!">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/step1.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/zhuce.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/verify.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/done.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/chenggong.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/cg2.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/welcome.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/ok.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/youxiang.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/create.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/cg3.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/git.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/bd1.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/gbh2.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/peizhi.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/init.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/status.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/add.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/ssh.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/ssh2.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/sshpeizhi1.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/sshpeizhi2.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/sshpeizhi3.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/sshpeizhi4.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/sshpeizhi5.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/dakai1.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/dakai2.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/tijiao1.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/tijiao2.png">
+<meta property="og:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/tijiao3.png">
+<meta property="og:updated_time" content="2018-12-17T04:40:31.364Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GitHub从注册到使用[详细图文教程]">
+<meta name="twitter:description" content="前言 gitHub是一个面向开源及私有软件项目的托管平台，除了git代码仓库托管及基本的 Web管理界面以外，还提供了订阅、讨论组、文本渲染、在线文件编辑器、协作图谱（报表）、代码片段分享（Gist）等功能。是全球最大的社交编程及代码托管网站，没有之一，所以还没有注册的小伙伴抓紧啦，此文将带你一步一步，从注册到使用，从头到尾体验一番，废话不多说，Let’s do it!">
+<meta name="twitter:image" content="http://rosesnow.top/2018/11/16/拥有一个自己的github/step1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://rosesnow.top/2018/11/16/拥有一个自己的github/">
+
+
+
+
+
+  <title>GitHub从注册到使用[详细图文教程] | 枪在手，跟我走</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/RoseSnow" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">枪在手，跟我走</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">初极狭，才通人，复行数十步，豁然开朗</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user 表示关于我"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            生活
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rosesnow.top/2018/11/16/拥有一个自己的github/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RoseSnow">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枪在手，跟我走">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">GitHub从注册到使用[详细图文教程]</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-16T14:10:07+08:00">
+                2018-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/GitHub/" itemprop="url" rel="index">
+                    <span itemprop="name">GitHub</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>gitHub是一个面向开源及私有软件项目的托管平台，除了git代码仓库托管及基本的 Web管理界面以外，还提供了订阅、讨论组、文本渲染、在线文件编辑器、协作图谱（报表）、代码片段分享（Gist）等功能。是全球最大的社交编程及代码托管网站，没有之一，所以还没有注册的小伙伴抓紧啦，此文将带你一步一步，从注册到使用，从头到尾体验一番，废话不多说，Let’s do it!</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h2 id="注册github步骤"><a href="#注册github步骤" class="headerlink" title="注册github步骤"></a>注册github步骤</h2><ol>
+<li>打开github官网，进入注册界面 <a href="https://github.com/join" target="_blank" rel="noopener"><strong>点我注册</strong></a></li>
+<li>我们会看到这个页面 <img src="/2018/11/16/拥有一个自己的github/step1.png" alt="Loding..."></li>
+</ol>
+<ul>
+<li>Step1: 这里需要填写昵称（用户名）、注册邮箱和密码</li>
+<li><strong>注意：</strong></li>
+</ul>
+<blockquote>
+<p><strong>昵称一栏</strong>：每次在你输入昵称之后，都会检查是否已经被注册。如果被注册了，那么会提示Username is already taken。此时请换另一个昵称进行注册。昵称中只能出现字母、数字、短横线（-），并且短横线不能作为开头头。中文也是不合法昵称。</p>
+</blockquote>
+<blockquote>
+<p><strong>邮箱一栏</strong>：要填写合法邮箱，并且是未在GitHub注册过的邮箱。否则会弹出错误提示。</p>
+</blockquote>
+<blockquote>
+<p><strong>密码一栏</strong>：注意密码至少有7个字符，其中至少有一个小写字母，至少有一个是数字。</p>
+</blockquote>
+<ul>
+<li>示例如下图：<img src="/2018/11/16/拥有一个自己的github/zhuce.png" alt="Loding..."></li>
+</ul>
+<blockquote>
+<p>在三个输入框中的信息都合法之后，它们右边会出现绿色小箭头。此时点击最下方的绿色大按钮来开始注册。</p>
+</blockquote>
+<ul>
+<li><p>会进入如下界面：<img src="/2018/11/16/拥有一个自己的github/verify.png" alt="Loding..."></p>
+</li>
+<li><p>点击verify进入如下页面：<img src="/2018/11/16/拥有一个自己的github/done.png" alt="Loding..."></p>
+</li>
+</ul>
+<blockquote>
+<p>只需要旋转图片使之转到正确的方位</p>
+</blockquote>
+<ul>
+<li><p>点击Done进入如下界面：<img src="/2018/11/16/拥有一个自己的github/chenggong.png" alt="Loding..."></p>
+</li>
+<li><p>接着跳转到step2页面如图：<img src="/2018/11/16/拥有一个自己的github/cg2.png" alt="Loding..."></p>
+</li>
+<li><p>默认免费模板，什么都不用改，直接点Continue进入step3页面：<img src="/2018/11/16/拥有一个自己的github/welcome.png" alt="Loding..."></p>
+<blockquote>
+<p>Github为了分析用户设置了几道问卷题，可以如实回答也可以随便填写。第一道题单选问你的经验如何，A:经验丰富 B:还凑和 C:完全新手 ；第二道题多选问你想用github做什么用，A：学校项目 B:开发 C：设计 D:研究 E:项目管理 F:其它；第三道题单选问你怎么描述自己 A:我是专业人员 B:我是业余爱好者 C：我是学生 D：其它 .第四道简答题，说一下你的兴趣。答完后点击绿色按钮，submit提交问卷。</p>
+</blockquote>
+</li>
+<li><p>点击Submit提交后跳转如下界面：<img src="/2018/11/16/拥有一个自己的github/ok.png" alt="Loding..."></p>
+</li>
+<li><p>随即会出现如下界面：<img src="/2018/11/16/拥有一个自己的github/youxiang.png" alt="Loding..."></p>
+<blockquote>
+<p>这里需要进行邮箱验证，此时你刚刚注册用的邮箱会接到一条github官网发送的邮件，打开邮件点击链接即可验证并自动跳回注册完成页面，点击start a project创建仓库。</p>
+</blockquote>
+</li>
+<li><p>点击start a project会进入如下界面：<img src="/2018/11/16/拥有一个自己的github/create.png" alt="Loding..."></p>
+<blockquote>
+<p>如图，填写仓库名称，写上描述，点击create即可创建</p>
+</blockquote>
+</li>
+<li><p>创建成功进入如下界面：<img src="/2018/11/16/拥有一个自己的github/cg3.png" alt="Loding..."></p>
+</li>
+</ul>
+<ol start="3">
+<li>安装Git工具 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener"><strong>点我下载</strong></a></li>
+</ol>
+<ul>
+<li>根据计算机及系统选择下载 如图：<img src="/2018/11/16/拥有一个自己的github/git.png" alt="Loding..."></li>
+<li>下载完毕按照指示点击next一步一步安装即可</li>
+</ul>
+<ol start="4">
+<li>创建一个本地仓库</li>
+</ol>
+<ul>
+<li>在本地创建一个文件夹作为仓库，我创建的是DarkHair，再创建一个文件验证上传操作，如下图：<img src="/2018/11/16/拥有一个自己的github/bd1.png" alt="Loding..."></li>
+</ul>
+<ol start="5">
+<li><p>之后在该目录下鼠标右键点击Git Bash Here 进入Git命令窗口 如图：<img src="/2018/11/16/拥有一个自己的github/gbh2.png" alt="Loding..."></p>
+</li>
+<li><p>全局配置一下用户名和邮箱 键入两行命令：<code>git config --global user.name&quot;你自己注册的名字&quot;</code> 和 <code>git config --global user.email&quot;你注册用的邮箱&quot;</code>如图：<img src="/2018/11/16/拥有一个自己的github/peizhi.png" alt="Loding..."></p>
+</li>
+<li><p>接着键入命令<code>git init</code>初始化一下，生成.git文件，但是这个文件默认隐藏的，查看选中隐藏文件即可看见 如图：<img src="/2018/11/16/拥有一个自己的github/init.png" alt="Loding..."></p>
+</li>
+<li><p>接着键入命令<code>git status</code>查看当前文件状态 红色箭头所指表示没有提交的文件 如图：<img src="/2018/11/16/拥有一个自己的github/status.png" alt="Loding..."></p>
+</li>
+<li><p>添加提交文件myfirst.txt,键入命令<code>git add myfirst.txt</code>或者<code>git add .</code> 两者区别：前者提交指定的文件，后者提交当前目录所有文件[注意 .之前要有空格] 到此，发现myfirst.txt由红色变味了深绿色 说明该文件已经提交到本地仓储 如图：<img src="/2018/11/16/拥有一个自己的github/add.png" alt="Loding..."> </p>
+</li>
+<li><p>生产SSH密钥，键入命令<code>ssh-keygen -t rsa -C &quot;你的邮箱&quot;</code> 如图：<img src="/2018/11/16/拥有一个自己的github/ssh.png" alt="Loding..."></p>
+</li>
+<li><p>进入该目录<code>C:\Users\Master\.ssh</code>打开id_rsa.pub 复制里边的内容如图：<img src="/2018/11/16/拥有一个自己的github/ssh2.png" alt="Loding..."> </p>
+</li>
+<li><p>打开github添加ssh密钥 步骤如图：<br><img src="/2018/11/16/拥有一个自己的github/sshpeizhi1.png" alt="Loding..."><br><img src="/2018/11/16/拥有一个自己的github/sshpeizhi2.png" alt="Loding..."><br><img src="/2018/11/16/拥有一个自己的github/sshpeizhi3.png" alt="Loding..."><br><img src="/2018/11/16/拥有一个自己的github/sshpeizhi4.png" alt="Loding..."></p>
+</li>
+</ol>
+<ul>
+<li>点击Add SSH key提交即可 成功如图：<img src="/2018/11/16/拥有一个自己的github/sshpeizhi5.png" alt="Loding..."></li>
+</ul>
+<ol start="13">
+<li>将本地仓库提交到远程仓库</li>
+</ol>
+<ul>
+<li>打开github 找到自己创建的第一个仓库并打开，复制ssh地址 如图：<br><img src="/2018/11/16/拥有一个自己的github/dakai1.png" alt="Loding..."><br><img src="/2018/11/16/拥有一个自己的github/dakai2.png" alt="Loding..."></li>
+</ul>
+<ol start="14">
+<li><p>键入命令<code>git remote add origin &quot;刚刚复制的ssh地址&quot;</code><br>再键入命令<code>git commit -m &quot;这里写描述，也可以不写&quot;</code>,最后执行命令<code>git push -u origin master</code>进行远程仓库提交 需要输入用户名和密码确认 如图：<br><img src="/2018/11/16/拥有一个自己的github/tijiao1.png" alt="Loding..."><br><img src="/2018/11/16/拥有一个自己的github/tijiao2.png" alt="Loding..."><br><img src="/2018/11/16/拥有一个自己的github/tijiao3.png" alt="loding..."></p>
+</li>
+<li><p>以上操作完毕再打开github，进入到刚刚的仓库便可以看见我们刚刚提交上来的myfirst.txt文件了</p>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>以上就是从注册到如何使用github的完整步骤，写的比较详细，新手完全可以做到，比着来应该不会出错，至此，我们已经创建了第一个仓库并把本地文件提交到了远程仓库，下次再提交，也是一样的步骤，好啦，就到这里啦。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/gongzhonghao.png" alt="RoseSnow wechat" style="width: 200px; max-width: 100%;">
+    <div>扫码关注微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得文章不错，请我吃根辣条吧~~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wxpay.png" alt="RoseSnow 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="RoseSnow 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/03/使用vue-cli脚手架快速搭建Vue项目/" rel="next" title="使用vue-cli脚手架快速搭建Vue项目">
+                <i class="fa fa-chevron-left"></i> 使用vue-cli脚手架快速搭建Vue项目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/19/上一篇文章注册GitHub留下的坑/" rel="prev" title="解决上一篇文章注册github留下的坑">
+                解决上一篇文章注册github留下的坑 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="RoseSnow">
+            
+              <p class="site-author-name" itemprop="name">RoseSnow</p>
+              <p class="site-description motion-element" itemprop="description">初极狭，才通人，复行数十步，豁然开朗</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RoseSnow" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="number_nine@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="w3school" target="_blank">w3school</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰官网" target="_blank">廖雪峰官网</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册github步骤"><span class="nav-text">注册github步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <div class="theme-info">
+      <span class="post-count">本站总字数: 23k</span>
+    </div>
+  
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站阅读量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+</body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</html>
