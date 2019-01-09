@@ -88,23 +88,23 @@
 <meta name="keywords" content="微信小程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序爬坑记之--获取位置">
-<meta property="og:url" content="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/index.html">
+<meta property="og:url" content="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/index.html">
 <meta property="og:site_name" content="枪在手，跟我走">
 <meta property="og:description" content="前言 微信小程序快一个月没碰了，今天受一个老哥的启发，决定继续顺爬坑。我们经常遇到这样的情景，比如定外卖或者使用地图APP的时候，会让我们选择当前位置，今天的问题是如何获取当前位置。本文通过一个Demo来展示。废话不多讲，来看看吧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/zong.gif">
-<meta property="og:image" content="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/huoqu.png">
-<meta property="og:image" content="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/button.png">
-<meta property="og:image" content="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/weizhi.png">
-<meta property="og:image" content="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/get.png">
-<meta property="og:image" content="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/ditu.png">
-<meta property="og:image" content="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/name.png">
-<meta property="og:image" content="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/xianshi.png">
-<meta property="og:updated_time" content="2019-01-09T15:59:22.458Z">
+<meta property="og:image" content="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/zong.gif">
+<meta property="og:image" content="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/huoqu.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/button.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/weizhi.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/get.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/ditu.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/name.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/xianshi.png">
+<meta property="og:updated_time" content="2019-01-09T16:01:16.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序爬坑记之--获取位置">
 <meta name="twitter:description" content="前言 微信小程序快一个月没碰了，今天受一个老哥的启发，决定继续顺爬坑。我们经常遇到这样的情景，比如定外卖或者使用地图APP的时候，会让我们选择当前位置，今天的问题是如何获取当前位置。本文通过一个Demo来展示。废话不多讲，来看看吧。">
-<meta name="twitter:image" content="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/zong.gif">
+<meta name="twitter:image" content="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/zong.gif">
 
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/">
+  <link rel="canonical" href="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/">
 
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rosesnow.top/2019/01/09/微信小程序爬坑记1/">
+    <link itemprop="mainEntityOfPage" href="http://rosesnow.top/2019/01/10/微信小程序爬坑记1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RoseSnow">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T14:10:07+08:00">
-                2019-01-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-10T14:10:07+08:00">
+                2019-01-10
               </time>
             
 
@@ -419,9 +419,9 @@
 </blockquote>
 <a id="more"></a>
 <hr>
-<p>先看一下效果<br><img src="/2019/01/09/微信小程序爬坑记1/zong.gif" alt="loading..."></p>
+<p>先看一下效果<br><img src="/2019/01/10/微信小程序爬坑记1/zong.gif" alt="loading..."></p>
 <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>来看一下需求，当点击获取按钮时跳转到地图页面，选择当前位置，并把选择的地址返回来呈现在文本框里，如图</p>
-<p><img src="/2019/01/09/微信小程序爬坑记1/huoqu.png" alt="loading..."></p>
+<p><img src="/2019/01/10/微信小程序爬坑记1/huoqu.png" alt="loading..."></p>
 <p>先贴下最终代码，随后再详细说明。代码如下</p>
 <blockquote>
 <p>index.wxml</p>
@@ -436,21 +436,21 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="comment">//获取应用实例</span></span><br><span class="line"><span class="keyword">const</span> app = getApp()</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    name: <span class="string">''</span>,</span><br><span class="line">    address: <span class="string">''</span>,</span><br><span class="line">    motto: <span class="string">'点我获取位置'</span>,</span><br><span class="line">    userInfo: &#123;&#125;,</span><br><span class="line">    hasUserInfo: <span class="literal">false</span>,</span><br><span class="line">    canIUse: wx.canIUse(<span class="string">'button.open-type.getUserInfo'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  onLoad: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (app.globalData.userInfo) &#123;</span><br><span class="line">      <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        userInfo: app.globalData.userInfo,</span><br><span class="line">        hasUserInfo: <span class="literal">true</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.data.canIUse)&#123;</span><br><span class="line">      <span class="comment">// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回</span></span><br><span class="line">      <span class="comment">// 所以此处加入 callback 以防止这种情况</span></span><br><span class="line">      app.userInfoReadyCallback = <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">          userInfo: res.userInfo,</span><br><span class="line">          hasUserInfo: <span class="literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 在没有 open-type=getUserInfo 版本的兼容处理</span></span><br><span class="line">      wx.getUserInfo(&#123;</span><br><span class="line">        success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">          app.globalData.userInfo = res.userInfo</span><br><span class="line">          <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">            userInfo: res.userInfo,</span><br><span class="line">            hasUserInfo: <span class="literal">true</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  getUserInfo: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">    app.globalData.userInfo = e.detail.userInfo</span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      userInfo: e.detail.userInfo,</span><br><span class="line">      hasUserInfo: <span class="literal">true</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取位置</span></span><br><span class="line">  getMyLocation()&#123;</span><br><span class="line">    wx.getLocation(&#123;</span><br><span class="line">      type: <span class="string">'wgs84'</span>,</span><br><span class="line">      success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        </span><br><span class="line">        wx.chooseLocation(&#123;</span><br><span class="line">          success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(res);</span><br><span class="line">            <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">              name: res.name,</span><br><span class="line">              address: res.address</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="给按钮绑定点击事件"><a href="#给按钮绑定点击事件" class="headerlink" title="给按钮绑定点击事件"></a>给按钮绑定点击事件</h3><p>点击按钮跳转，所以首先要给按钮绑定操作事件,如图</p>
-<p><img src="/2019/01/09/微信小程序爬坑记1/button.png" alt="loading..."></p>
+<p><img src="/2019/01/10/微信小程序爬坑记1/button.png" alt="loading..."></p>
 <p>这里 <code>getMyLocation</code> 为点击事件；motto是按钮上显示的文字，在 index.js的Page中的data下进行初始化。</p>
 <h3 id="打开地图-amp-选择位置"><a href="#打开地图-amp-选择位置" class="headerlink" title="打开地图&amp;选择位置"></a>打开地图&amp;选择位置</h3><p>其次是打开地图，我们查找官方文档 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/wx.openLocation.html" target="_blank" rel="noopener"><strong>点我查看官方文档</strong></a> 可以看到官方提供的有获取位置的API，如图</p>
-<p><img src="/2019/01/09/微信小程序爬坑记1/weizhi.png" alt="loading..."></p>
+<p><img src="/2019/01/10/微信小程序爬坑记1/weizhi.png" alt="loading..."></p>
 <p>这里我们会用到下面两个，分别是 <code>wx.getLocation</code> 和 <code>wx.chooseLocation</code> 。<br>把实例代码复制粘贴到 <code>onLoad</code> 周期函数中，表示程序启动时即获取当前位置，下面重点看下这两个API的实现</p>
-<p><img src="/2019/01/09/微信小程序爬坑记1/get.png" alt="loading..."></p>
+<p><img src="/2019/01/10/微信小程序爬坑记1/get.png" alt="loading..."></p>
 <p>其中 <code>wx.getLocation</code> 中的 <code>type: &#39;wgs84&#39;</code> 表示返回GPS坐标； <code>success</code> 表示接口调用成功的回调函数，这里调用成功后，我们用 <code>wx.chooseLocation</code> 打开地图，选择当前位置，如图</p>
-<p><img src="/2019/01/09/微信小程序爬坑记1/ditu.png" alt="loading..."></p>
+<p><img src="/2019/01/10/微信小程序爬坑记1/ditu.png" alt="loading..."></p>
 <p>这里我们打印一下 <code>wx.chooseLocation</code> 成功的返回值如图</p>
-<p><img src="/2019/01/09/微信小程序爬坑记1/name.png" alt="loading..."></p>
+<p><img src="/2019/01/10/微信小程序爬坑记1/name.png" alt="loading..."></p>
 <p>可以看到返回值里面除了经纬度，还有 <code>name</code> 和 <code>address</code> 两个属性，其对应的值正是我们想要的。</p>
 <h3 id="获取当前位置返回值"><a href="#获取当前位置返回值" class="headerlink" title="获取当前位置返回值"></a>获取当前位置返回值</h3><p>想拿到这两个值就很简单了，在data中我们先定义了 <code>name</code> 和 <code>address</code> 两个值，默认值为空。现在只需要重新给这两个值赋值即可，如上代码中，<code>this.setData</code>里对 <code>name</code> 和 <code>address</code> 分别赋值。 这样获取到当前地理位置了，下一步只需要把这两个值渲染到指定的位置即可。</p>
 <p><strong>注意</strong>：我这里能直接用 <code>this.setData</code> 是因为前面用的箭头函数，没有this指向的问题，如果你没用剪头函数，需要在函数外部对 <code>this</code> 做重定向，例如 <code>var that = this</code> ; 然后在函数内部就用 <code>that</code> 代替 <code>this</code></p>
 <h3 id="在指定位置渲染数据"><a href="#在指定位置渲染数据" class="headerlink" title="在指定位置渲染数据"></a>在指定位置渲染数据</h3><p>在指定位置渲染上一步得到的位置数据，这里用插值表达式渲染。如图</p>
-<p><img src="/2019/01/09/微信小程序爬坑记1/xianshi.png" alt="loading..."></p>
+<p><img src="/2019/01/10/微信小程序爬坑记1/xianshi.png" alt="loading..."></p>
 <p>其中 <code>\n</code> 表示换行</p>
 <p>这样我们就获取到了当前位置，并渲染到文本框里，这种场景是不是很熟悉。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>微信小程序的爬坑之路还很长，打算写一个系列文章，随后我也会把基础的知识也写一写，像创建项目，页面配置，路由跳转等等，之前写的一个电影的小项目我也会抽时间写一写。</p>
