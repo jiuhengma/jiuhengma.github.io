@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微信小程序,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 今天继续爬坑，做一下上划加载更过数据的功能，我们浏览网页时，加载更过数据一般有两种方式，一种是点击按钮，实现加载，一种是屏幕上划实现加载。前者容易实现，今天来说下后者。">
+<meta name="keywords" content="微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序爬坑记之--上划加载更多">
+<meta property="og:url" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/index.html">
+<meta property="og:site_name" content="枪在手，跟我走">
+<meta property="og:description" content="前言 今天继续爬坑，做一下上划加载更过数据的功能，我们浏览网页时，加载更过数据一般有两种方式，一种是点击按钮，实现加载，一种是屏幕上划实现加载。前者容易实现，今天来说下后者。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/jzgd.gif">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/di.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/sv.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/height.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/geth.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/zhi.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/getimg.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/resdata.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/xr.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/xrtu.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/jzgd.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/page.png">
+<meta property="og:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/zhuijia.png">
+<meta property="og:updated_time" content="2019-01-13T11:55:49.174Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序爬坑记之--上划加载更多">
+<meta name="twitter:description" content="前言 今天继续爬坑，做一下上划加载更过数据的功能，我们浏览网页时，加载更过数据一般有两种方式，一种是点击按钮，实现加载，一种是屏幕上划实现加载。前者容易实现，今天来说下后者。">
+<meta name="twitter:image" content="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/jzgd.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/">
+
+
+
+
+
+  <title>微信小程序爬坑记之--上划加载更多 | 枪在手，跟我走</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/RoseSnow" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">枪在手，跟我走</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">初极狭，才通人，复行数十步，豁然开朗</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user 表示关于我"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            生活
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rosesnow.top/2019/01/13/微信小程序爬坑记2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RoseSnow">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枪在手，跟我走">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信小程序爬坑记之--上划加载更多</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-13T11:10:07+08:00">
+                2019-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>今天继续爬坑，做一下上划加载更过数据的功能，我们浏览网页时，加载更过数据一般有两种方式，一种是点击按钮，实现加载，一种是屏幕上划实现加载。前者容易实现，今天来说下后者。</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>实现页面上划加载下一页数据。</p>
+<p>先看一下效果，欣赏一波美女，这里有空白的是因为接口问题，可能是图片地址失效。</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/jzgd.gif" alt="loading..."></p>
+<p>照例先贴最终代码，随后再做详细说明。</p>
+<blockquote>
+<p>imgs.wxml</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">scroll-view</span> <span class="attr">bindscrolltolower</span>=<span class="string">"loadMore"</span> <span class="attr">scroll-y</span>=<span class="string">"true"</span> <span class="attr">style</span>=<span class="string">"height: &#123;&#123;windowHeight&#125;&#125;px"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"img-list"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'item'</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123; list &#125;&#125;"</span> <span class="attr">wx:key</span>=<span class="string">"item.createdAt"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">image</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;item.url&#125;&#125;"</span> <span class="attr">mode</span>=<span class="string">"scaleToFill"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"loading"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">loading</span> <span class="attr">hidden</span>=<span class="string">"&#123;&#123;hidden&#125;&#125;"</span>&gt;</span>加载中...<span class="tag">&lt;/<span class="name">loading</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">scroll-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>imgs.wxss</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.img-list</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">48.3%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">400</span>rpx;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#c4c4c4</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">5px</span> <span class="number">5px</span> <span class="number">4px</span> <span class="number">#888888</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10</span>rpx <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="selector-class">.item</span> <span class="selector-tag">image</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>imgs.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取应用实例</span></span><br><span class="line"><span class="keyword">const</span> app = getApp()</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    hidden: <span class="literal">true</span>,</span><br><span class="line">    windowHeight: <span class="number">0</span>,</span><br><span class="line">    list:[],</span><br><span class="line">    page: <span class="number">3</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// API接口：https://www.apiopen.top/meituApi?page=3</span></span><br><span class="line">  </span><br><span class="line">  onLoad()&#123;</span><br><span class="line">      <span class="comment">// 获取屏幕高度</span></span><br><span class="line">    wx.getSystemInfo(&#123;</span><br><span class="line">      success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">          windowHeight: res.windowHeight</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">// console.log(res.windowHeight);</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.getImages()</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 请求数据</span></span><br><span class="line">  getImages()&#123;</span><br><span class="line">    <span class="keyword">const</span> apiUrl = <span class="string">"https://www.apiopen.top/meituApi?"</span> + <span class="keyword">this</span>.data.page;</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">        url: apiUrl,</span><br><span class="line">        data:&#123;</span><br><span class="line">        &#125;,</span><br><span class="line">        header:&#123;</span><br><span class="line">            <span class="string">'content-type'</span>: <span class="string">'json'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">                <span class="comment">// 把请求的数据存放到 data中的list中</span></span><br><span class="line">                <span class="comment">// list: res.data.data</span></span><br><span class="line">                <span class="comment">// 追加列表</span></span><br><span class="line">                list: <span class="keyword">this</span>.data.list.concat(res.data.data)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 上划加载更多</span></span><br><span class="line">  loadMore()&#123;</span><br><span class="line">    <span class="comment">//console.log(this.data.page);</span></span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        page: <span class="keyword">this</span>.data.page + <span class="number">1</span>,</span><br><span class="line">        <span class="comment">// 显示加载动画</span></span><br><span class="line">        hidden: <span class="literal">false</span></span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 持续1.5秒的加载动画，并执行加载操作</span></span><br><span class="line">    setTimeout( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">            hidden: <span class="literal">true</span>  <span class="comment">//隐藏加载动画</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">this</span>.getImages()</span><br><span class="line">    &#125;,<span class="number">1500</span>)</span><br><span class="line">      </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>点击按钮加载更多，只需要给按钮添加一个点击事件，触发时，向服务端发送请求，获取下一页数据，并追加到第一次请求的数据列表之后。上划加载是利用滚动条的高度来判断是否触发加载更多的事件，当滚动条触底时说明当前页数据加载完毕，需要请求下一页数据，所以滚动条触底时触发请求，加载下一页数据。</p>
+<p>查看官网组件可以看到视图容器中有一个 <code>scoll-view</code> 可以规定滚动视图区域，其中有一个属性 <code>bindscrolltolower</code> 可以在滚动到底部时触发事件。如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/di.png" alt="loading..."></p>
+<h3 id="滚动区域"><a href="#滚动区域" class="headerlink" title="滚动区域"></a>滚动区域</h3><p>有了这个组件，只需要把内容区用 <code>scoll-view</code> 包起来，指定滚动方向 <code>scoll-y</code> 并绑定滚动到底部时触发的事件，这里我绑定的触发事件为<code>loadMOre</code> 如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/sv.png" alt="loading..."></p>
+<h3 id="获取用户当前屏幕窗口可用高度"><a href="#获取用户当前屏幕窗口可用高度" class="headerlink" title="获取用户当前屏幕窗口可用高度"></a>获取用户当前屏幕窗口可用高度</h3><p>如果要根据滚动条高度判断是否触发加载事件，首先得知道用户当前是否滑动到了底部，由于机型不同，所以这个高度是不固定值，查找官方文档发现提供的有一个获取系统信息的API <code>wx.getSystemInfo</code> 其中有一个 <code>windowHeight</code> 属性表示系统可用的窗口高度。这里我们给 <code>scoll-view</code> 指定高度为 <code>windowHeight</code> 如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/height.png" alt="loading..."></p>
+<p>然后调用 <code>wx.getSysteInfo</code> 获取当前窗口可用高度，如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/geth.png" alt="loading..."></p>
+<p>这里打印一下成功的返回值，<code>console.log(res.windowHeight)</code> 发现是个数值，而这个值就是当前窗口可用的最大高度，如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/zhi.png" alt="loading..."></p>
+<h3 id="请求数据"><a href="#请求数据" class="headerlink" title="请求数据"></a>请求数据</h3><p>通过官方提供的 <code>wx.request</code> API发起网络请求，其中 <code>url</code> 为请求的接口， <code>data</code> 是参数, <code>success</code> 是请求成功的回调函数。应用如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/getimg.png" alt="loading..."></p>
+<p>这里 <code>getImages</code> 为请求方法，其中请求的API接口中，由于 <code>page</code> 是表示页数，不能写死，是活参，所以在 <code>data</code> 里初始化 <code>page</code> 默认值为3[你要问我为什么默认值为3，因为喜欢]</p>
+<p>这样就可以通过 <code>this.data.page</code> 拿到页码，拼接到地址后面，这里也可以把参数写进 <code>wx.request</code> 中的 <code>data</code> 里。请求成功则执行 <code>success</code> 成功的回调函数，</p>
+<p>我们打印一下成功的回调返回的数据，<code>console.log(res.data)</code> 发现请求成功，并且打印出了数据，其中 <code>data</code> 里的20条内容是我们想要的数据，如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/resdata.png" alt="loading..."></p>
+<p>接下来就是把请求的数据储存起来，以备页面渲染使用。在 <code>Page</code> 的 <code>data</code> 中定义了存储数据的数组 <code>list</code> 默认为空。在请求成功后对 <code>list</code> 重新传值， <code>list: res.data.data</code> 。这样数据就被存起来了。</p>
+<p>注意： 要把 <code>getImages</code> 方法在 <code>onLoad</code> 周期函数中调用。</p>
+<h3 id="渲染数据"><a href="#渲染数据" class="headerlink" title="渲染数据"></a>渲染数据</h3><p>上一步我们已经拿到了数据，下面进行页面渲染，如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/xr.png" alt="loading..."></p>
+<p>数据渲染用 <code>wx:for</code> 循环 渲染 <code>list</code> 中的每一项，要指定唯一的 <code>wx:key</code> 这里和Vue里的 <code>v-for</code> 指令类似，必须指定唯一 <code>key</code> 。查看数据列表可知，唯一值是 <code>createdAt</code> 。这时打开项目可以看到图片已经渲染出来了。如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/xrtu.png" alt="loading..."></p>
+<h3 id="加载更多"><a href="#加载更多" class="headerlink" title="加载更多"></a>加载更多</h3><p>数据渲染上了，但只是一页的数据，现在解决加载更多的数据。如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/jzgd.png" alt="loading..."></p>
+<p>这里的 <code>loadMore</code> 方法是之前绑定的滚动块儿触底时执行的事件，当滑动到最底部时，触发事件，由于加载更多也是请求数据，不同的是页码值加一，所以这里先对页码值 <code>page</code> 加1后重新赋值，这个 <code>hidden</code> 是控制加载动画显示与否，默认初始值为 <code>true</code> 即不显示，这里执行加载更多时，让其显示，有一个加载的动态效果。</p>
+<p>页码值加1后，再次调用 <code>getImages</code> 方法，进行数据请求，现在请求的就是下一页的数据了，这里启动了一个定时器，让其有个缓冲加载的效果，当1.5s请求完毕之后，把加载的动效隐藏。再次刷新项目滑动到底部可以发现，能够加载下一页数据了。打开调试器，点开 <code>Network</code> 发现随着每次上划加载，这里的请求地址中的页码是逐次以跨度为1递增的，如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/page.png" alt="loading..."></p>
+<p>但是这里存在一个问题，就是新加载的数据会覆盖掉上一页的数据。这里只需要对 <code>list</code> 进行更改即可。</p>
+<h3 id="追加数据"><a href="#追加数据" class="headerlink" title="追加数据"></a>追加数据</h3><p>请求数据的数据是在 <code>list</code> 中保存的,之前是这样写的 <code>list: res.data.data</code> 。这就表示每请求一次数据即一页数据，都会把本次数据更新到 <code>list</code> 。这样下一次的数据永远都会把上一次的覆盖掉，所以这里应该对数据进行追加即把本次数据连接到上一次的数据后面，用 <code>concat</code> 进行连接。如图</p>
+<p><img src="/2019/01/13/微信小程序爬坑记2/zhuijia.png" alt="loading..."></p>
+<p>然后在重新启动项目，滑动加载，再返回上一页，发现上一页的数据还在，说明已经解决了问题。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>经上操作基本实现了上划加载更多的功能，当然还可以加一些判断，比如当加载到最后一页时，提示没有更多了，更多的就自己根据需求动手完善吧，源码可以去我github里找，<a href="https://github.com/RoseSnow/wxxcx-loadMoreDemo" target="_blank" rel="noopener"><strong>点我快速跳转</strong></a>。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得文章不错，请我吃根辣条吧~~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wxpay.png" alt="RoseSnow 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="RoseSnow 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/10/微信小程序爬坑记1/" rel="next" title="微信小程序爬坑记之--获取位置">
+                <i class="fa fa-chevron-left"></i> 微信小程序爬坑记之--获取位置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="RoseSnow">
+            
+              <p class="site-author-name" itemprop="name">RoseSnow</p>
+              <p class="site-description motion-element" itemprop="description">初极狭，才通人，复行数十步，豁然开朗</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RoseSnow" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="number_nine@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="w3school" target="_blank">w3school</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰官网" target="_blank">廖雪峰官网</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#滚动区域"><span class="nav-text">滚动区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取用户当前屏幕窗口可用高度"><span class="nav-text">获取用户当前屏幕窗口可用高度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求数据"><span class="nav-text">请求数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渲染数据"><span class="nav-text">渲染数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载更多"><span class="nav-text">加载更多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#追加数据"><span class="nav-text">追加数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <div class="theme-info">
+      <span class="post-count">本站总字数: 27.1k</span>
+    </div>
+  
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站阅读量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+</body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</html>
