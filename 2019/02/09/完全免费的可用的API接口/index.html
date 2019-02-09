@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="API,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 在开发测试阶段，或者是在写Demo的时候，难免会用到一些测试数据，有时苦于没有可用的接口，需要自己动手去写，但是这样大大降低了效率，前期我也找了一些开放的接口，这篇文章整理一下，以下接口完全免费，不用注册，返回格式全是JSON，所有接口均可无限制使用，有需要的小伙伴可以进来看看。(ps:所有数据来源于网络，如有侵权，请作者联系删除)">
+<meta name="keywords" content="API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="整理一些完全免费开放的API接口">
+<meta property="og:url" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/index.html">
+<meta property="og:site_name" content="枪在手，跟我走">
+<meta property="og:description" content="前言 在开发测试阶段，或者是在写Demo的时候，难免会用到一些测试数据，有时苦于没有可用的接口，需要自己动手去写，但是这样大大降低了效率，前期我也找了一些开放的接口，这篇文章整理一下，以下接口完全免费，不用注册，返回格式全是JSON，所有接口均可无限制使用，有需要的小伙伴可以进来看看。(ps:所有数据来源于网络，如有侵权，请作者联系删除)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/shouye.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/tupian2.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/tupian1.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/yinyuess.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/yinyuexq.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/regebang.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/phbxq.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/yydt.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/dtxq.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/spfl.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/spfl2.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/jrsptj.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/gjidtj.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/tsfl.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/xsss.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/xsxq.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/tqss.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/zxdz.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/tgidcdz.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/sjrmdz.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/dzpllb.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/xwzx.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/sjsctj.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/gsczzss.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/ssgsc.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/scgsc.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/tcgsc.png">
+<meta property="og:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/wmhq.png">
+<meta property="og:updated_time" content="2019-02-09T07:23:11.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="整理一些完全免费开放的API接口">
+<meta name="twitter:description" content="前言 在开发测试阶段，或者是在写Demo的时候，难免会用到一些测试数据，有时苦于没有可用的接口，需要自己动手去写，但是这样大大降低了效率，前期我也找了一些开放的接口，这篇文章整理一下，以下接口完全免费，不用注册，返回格式全是JSON，所有接口均可无限制使用，有需要的小伙伴可以进来看看。(ps:所有数据来源于网络，如有侵权，请作者联系删除)">
+<meta name="twitter:image" content="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/shouye.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/">
+
+
+
+
+
+  <title>整理一些完全免费开放的API接口 | 枪在手，跟我走</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/RoseSnow" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">枪在手，跟我走</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">初极狭，才通人，复行数十步，豁然开朗</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user 表示关于我"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            生活
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rosesnow.top/2019/02/09/完全免费的可用的API接口/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RoseSnow">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枪在手，跟我走">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">整理一些完全免费开放的API接口</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-09T14:10:07+08:00">
+                2019-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/API接口/" itemprop="url" rel="index">
+                    <span itemprop="name">API接口</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2019/02/09/完全免费的可用的API接口/shouye.png" alt="loading..."></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>在开发测试阶段，或者是在写Demo的时候，难免会用到一些测试数据，有时苦于没有可用的接口，需要自己动手去写，但是这样大大降低了效率，前期我也找了一些开放的接口，这篇文章整理一下，以下接口完全免费，不用注册，返回格式全是JSON，所有接口均可无限制使用，有需要的小伙伴可以进来看看。(ps:所有数据来源于网络，如有侵权，请作者联系删除)</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h2 id="图片类接口"><a href="#图片类接口" class="headerlink" title="图片类接口"></a>图片类接口</h2><p>美女图片：</p>
+<ol>
+<li><a href="https://www.apiopen.top/meituApi?page=1" target="_blank" rel="noopener">https://www.apiopen.top/meituApi?page=1</a></li>
+<li><a href="https://www.easy-mock.com/mock/5c36b5d2be0a1c39bfd57589/img/beauty/page=1" target="_blank" rel="noopener">https://www.easy-mock.com/mock/5c36b5d2be0a1c39bfd57589/img/beauty/page=1</a></li>
+</ol>
+<p>风景图片：</p>
+<ol start="3">
+<li><a href="https://www.easy-mock.com/mock/5c36b5d2be0a1c39bfd57589/img/page=1" target="_blank" rel="noopener">https://www.easy-mock.com/mock/5c36b5d2be0a1c39bfd57589/img/page=1</a></li>
+</ol>
+<p>第一个接口每页有20条数据，多少页还不清楚，返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/tupian2.png" alt="loading"></p>
+<p>后两个接口是我用Easy Mock写的，第一个接口一共3页，每一页有10条数据，page表示页码。第二个接口两页，每一页10条数据。返回数据如下图<img src="/2019/02/09/完全免费的可用的API接口/tupian1.png" alt="loading"></p>
+<h2 id="音乐类接口"><a href="#音乐类接口" class="headerlink" title="音乐类接口"></a>音乐类接口</h2><ol>
+<li>音乐搜索：<a href="https://api.apiopen.top/searchMusic?name=好久不见" target="_blank" rel="noopener">https://api.apiopen.top/searchMusic?name=好久不见</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/yinyuess.png" alt="loading"></p>
+<ol start="2">
+<li>音乐详情：<a href="https://api.apiopen.top/musicDetails?id=604392760" target="_blank" rel="noopener">https://api.apiopen.top/musicDetails?id=604392760</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/yinyuexq.png" alt="loading"></p>
+<ol start="3">
+<li>音乐排行榜：<a href="https://api.apiopen.top/musicRankings" target="_blank" rel="noopener">https://api.apiopen.top/musicRankings</a></li>
+</ol>
+<p>该接口包含有热歌榜，新歌榜，网络歌曲榜，影视金曲榜，经典老歌榜以及欧美金曲榜。每个榜有4条数据，下面拿热歌榜数据如图<img src="/2019/02/09/完全免费的可用的API接口/regebang.png" alt="loading"></p>
+<ol start="4">
+<li>音乐排行榜详情：<a href="https://api.apiopen.top/musicRankingsDetails?type=1" target="_blank" rel="noopener">https://api.apiopen.top/musicRankingsDetails?type=1</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/phbxq.png" alt="loading"></p>
+<ol start="5">
+<li>音乐电台：<a href="https://api.apiopen.top/musicBroadcasting" target="_blank" rel="noopener">https://api.apiopen.top/musicBroadcasting</a></li>
+</ol>
+<p>此接口有公共频道和音乐人频道，返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/yydt.png" alt="loading"></p>
+<ol start="6">
+<li>音乐电台详情：<a href="https://api.apiopen.top/musicBroadcastingDetails?channelname=public_tuijian_spring" target="_blank" rel="noopener">https://api.apiopen.top/musicBroadcastingDetails?channelname=public_tuijian_spring</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/dtxq.png" alt="loading"></p>
+<h2 id="视频类接口"><a href="#视频类接口" class="headerlink" title="视频类接口"></a>视频类接口</h2><ol>
+<li>视频分类：<a href="https://api.apiopen.top/videoHomeTab" target="_blank" rel="noopener">https://api.apiopen.top/videoHomeTab</a></li>
+</ol>
+<p>共有22种分类，每一类又有详细的视频，返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/spfl.png" alt="loading"></p>
+<ol start="2">
+<li>视频分类：<a href="https://api.apiopen.top/videoCategory" target="_blank" rel="noopener">https://api.apiopen.top/videoCategory</a></li>
+</ol>
+<p>和上面的类似，返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/spfl2.png" alt="loading"></p>
+<ol start="3">
+<li>今日视频推荐：<a href="https://api.apiopen.top/todayVideo" target="_blank" rel="noopener">https://api.apiopen.top/todayVideo</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/jrsptj.png" alt="loading"></p>
+<ol start="4">
+<li>根据ID推荐视频：<a href="https://api.apiopen.top/videoRecommend?id=127398" target="_blank" rel="noopener">https://api.apiopen.top/videoRecommend?id=127398</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/gjidtj.png" alt="loading"></p>
+<h2 id="小说类接口"><a href="#小说类接口" class="headerlink" title="小说类接口"></a>小说类接口</h2><ol>
+<li>书籍分类：<a href="https://www.easy-mock.com/mock/5c3e90f39d8f6075a543c3cd/story/classify" target="_blank" rel="noopener">https://www.easy-mock.com/mock/5c3e90f39d8f6075a543c3cd/story/classify</a></li>
+</ol>
+<p>用easymock写的，只有分类，包括类型和图片，共16中分类，返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/tsfl.png" alt="loading"></p>
+<ol start="2">
+<li>小说搜索：<a href="https://www.apiopen.top/novelSearchApi?name=%E7%9B%97%E5%A2%93%E7%AC%94%E8%AE%B0" target="_blank" rel="noopener">https://www.apiopen.top/novelSearchApi?name=盗墓笔记</a></li>
+</ol>
+<p>该接口提供的搜索功能只限小说名称，返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/xsss.png" alt="loading"></p>
+<ol start="3">
+<li>小说详情：<a href="https://www.apiopen.top/novelInfoApi?name=%E7%9B%97%E5%A2%93%E7%AC%94%E8%AE%B0" target="_blank" rel="noopener">https://www.apiopen.top/novelInfoApi?name=盗墓笔记</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/xsxq.png" alt="loading"></p>
+<h2 id="天气类接口"><a href="#天气类接口" class="headerlink" title="天气类接口"></a>天气类接口</h2><ol>
+<li>搜索地方天气：<a href="https://www.apiopen.top/weatherApi?city=%E6%88%90%E9%83%BD" target="_blank" rel="noopener">https://www.apiopen.top/weatherApi?city=成都</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/tqss.png" alt="loading"></p>
+<h2 id="段子类接口"><a href="#段子类接口" class="headerlink" title="段子类接口"></a>段子类接口</h2><ol>
+<li>最新段子：<a href="https://api.apiopen.top/getJoke?page=1&amp;count=2&amp;type=video" target="_blank" rel="noopener">https://api.apiopen.top/getJoke?page=1&amp;count=2&amp;type=video</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/zxdz.png" alt="loading"></p>
+<ol start="2">
+<li>通过ID查段子：<a href="https://api.apiopen.top/getSingleJoke?sid=28654780" target="_blank" rel="noopener">https://api.apiopen.top/getSingleJoke?sid=28654780</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/tgidcdz.png" alt="loading"></p>
+<ol start="3">
+<li>随机推荐热门段子：<a href="https://www.apiopen.top/satinApi?type=1&amp;page=1" target="_blank" rel="noopener">https://www.apiopen.top/satinApi?type=1&amp;page=1</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/sjrmdz.png" alt="loading"></p>
+<ol start="4">
+<li>随机推荐热门段子评论列表：<a href="https://www.apiopen.top/satinCommentApi?id=27610708&amp;page=1" target="_blank" rel="noopener">https://www.apiopen.top/satinCommentApi?id=27610708&amp;page=1</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/dzpllb.png" alt="loading"></p>
+<h2 id="新闻类接口"><a href="#新闻类接口" class="headerlink" title="新闻类接口"></a>新闻类接口</h2><ol>
+<li>实时新闻资讯：<a href="https://www.apiopen.top/journalismApi" target="_blank" rel="noopener">https://www.apiopen.top/journalismApi</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/xwzx.png" alt="loading"></p>
+<h2 id="古诗词类接口"><a href="#古诗词类接口" class="headerlink" title="古诗词类接口"></a>古诗词类接口</h2><ol>
+<li>随机一首诗词推荐：<a href="https://api.apiopen.top/recommendPoetry" target="_blank" rel="noopener">https://api.apiopen.top/recommendPoetry</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/sjsctj.png" alt="loading"></p>
+<ol start="2">
+<li>古诗词作者搜索：<a href="https://api.apiopen.top/searchAuthors?name=%E6%9D%8E%E7%99%BD" target="_blank" rel="noopener">https://api.apiopen.top/searchAuthors?name=李白</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/gsczzss.png" alt="loading"></p>
+<ol start="3">
+<li>模糊搜索(诗词名/作者)：<a href="https://api.apiopen.top/likePoetry?name=%E9%94%84%E7%A6%BE" target="_blank" rel="noopener">https://api.apiopen.top/likePoetry?name=锄禾</a></li>
+</ol>
+<p>返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/ssgsc.png" alt="loading"></p>
+<ol start="4">
+<li>获取宋朝古诗词：<a href="https://api.apiopen.top/getSongPoetry?page=1&amp;count=20" target="_blank" rel="noopener">https://api.apiopen.top/getSongPoetry?page=1&amp;count=20</a></li>
+</ol>
+<p>每页20条数据，返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/scgsc.png" alt="loading"></p>
+<ol start="5">
+<li>获取唐朝古诗词：<a href="https://api.apiopen.top/getTangPoetry?page=1&amp;count=20" target="_blank" rel="noopener">https://api.apiopen.top/getTangPoetry?page=1&amp;count=20</a></li>
+</ol>
+<p>每页20条数据，返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/tcgsc.png" alt="loading"></p>
+<h2 id="个性网名接口"><a href="#个性网名接口" class="headerlink" title="个性网名接口"></a>个性网名接口</h2><ol>
+<li>获取个性网名：<a href="https://www.apiopen.top/femaleNameApi?page=1" target="_blank" rel="noopener">https://www.apiopen.top/femaleNameApi?page=1</a></li>
+</ol>
+<p>每页20条数据，返回数据如图<img src="/2019/02/09/完全免费的可用的API接口/wmhq.png" alt="loading"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>以上所有接口我都测试过的，基本能够满足大家的开发需求，如果你在做自己的小项目，需要用到一些数据，可以用这些接口做测试，但是最好不要将这些API用于正式项目，因为有一些不稳定的因素，后期再遇到免费好用的或是我自己写的API还会添加上来，如果你也有可用的接口，可以私发给我，也加进来使其更加丰富。</p>
+</blockquote>
+<p><strong>注</strong>：本文绝大部分内容来自 <code>有梦想的程序丶猿</code> 的简书，对大佬表示感谢，文章地址 <a href="https://www.jianshu.com/p/e6f072839282" target="_blank" rel="noopener">https://www.jianshu.com/p/e6f072839282</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得文章不错，请我吃根辣条吧~~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wxpay.png" alt="RoseSnow 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="RoseSnow 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/API/" rel="tag"># API</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/07/Cookie vs WebStorage/" rel="next" title="Cookie vs WebStorage(SessionStorage & LocalStorage)">
+                <i class="fa fa-chevron-left"></i> Cookie vs WebStorage(SessionStorage & LocalStorage)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="RoseSnow">
+            
+              <p class="site-author-name" itemprop="name">RoseSnow</p>
+              <p class="site-description motion-element" itemprop="description">初极狭，才通人，复行数十步，豁然开朗</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RoseSnow" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="number_nine@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="w3school" target="_blank">w3school</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰官网" target="_blank">廖雪峰官网</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片类接口"><span class="nav-text">图片类接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音乐类接口"><span class="nav-text">音乐类接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频类接口"><span class="nav-text">视频类接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小说类接口"><span class="nav-text">小说类接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#天气类接口"><span class="nav-text">天气类接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#段子类接口"><span class="nav-text">段子类接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新闻类接口"><span class="nav-text">新闻类接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#古诗词类接口"><span class="nav-text">古诗词类接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个性网名接口"><span class="nav-text">个性网名接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <div class="theme-info">
+      <span class="post-count">本站总字数: 29.5k</span>
+    </div>
+  
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站阅读量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+</body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</html>
