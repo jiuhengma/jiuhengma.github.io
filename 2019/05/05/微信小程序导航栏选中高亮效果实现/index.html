@@ -87,16 +87,16 @@
 <meta name="description" content="前言 导航选择高效果实现，该场景用的很广泛，简单写一下实现过程，实际项目中最好封装成组件，这里先不做封装，下一篇文章写一写如何自定义组件。">
 <meta name="keywords" content="CSS,微信小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序爬坑记之导航栏选中高亮实现">
+<meta property="og:title" content="微信小程序爬坑记之导航栏选中高亮滚动条实现">
 <meta property="og:url" content="http://rosesnow.top/2019/05/05/微信小程序导航栏选中高亮效果实现/index.html">
 <meta property="og:site_name" content="枪在手，跟我走">
 <meta property="og:description" content="前言 导航选择高效果实现，该场景用的很广泛，简单写一下实现过程，实际项目中最好封装成组件，这里先不做封装，下一篇文章写一写如何自定义组件。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://rosesnow.top/2019/05/05/微信小程序导航栏选中高亮效果实现/shouye.png">
 <meta property="og:image" content="http://rosesnow.top/2019/05/05/微信小程序导航栏选中高亮效果实现/nav.gif">
-<meta property="og:updated_time" content="2019-05-09T12:27:06.449Z">
+<meta property="og:updated_time" content="2019-05-09T12:58:41.509Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微信小程序爬坑记之导航栏选中高亮实现">
+<meta name="twitter:title" content="微信小程序爬坑记之导航栏选中高亮滚动条实现">
 <meta name="twitter:description" content="前言 导航选择高效果实现，该场景用的很广泛，简单写一下实现过程，实际项目中最好封装成组件，这里先不做封装，下一篇文章写一写如何自定义组件。">
 <meta name="twitter:image" content="http://rosesnow.top/2019/05/05/微信小程序导航栏选中高亮效果实现/shouye.png">
 
@@ -134,7 +134,7 @@
 
 
 
-  <title>微信小程序爬坑记之导航栏选中高亮实现 | 枪在手，跟我走</title>
+  <title>微信小程序爬坑记之导航栏选中高亮滚动条实现 | 枪在手，跟我走</title>
   
 
 
@@ -300,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">微信小程序爬坑记之导航栏选中高亮实现</h1>
+          <h1 class="post-title" itemprop="name headline">微信小程序爬坑记之导航栏选中高亮滚动条实现</h1>
         
 
         <div class="post-meta">
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  541 字
+                  542 字
                 </span>
               
 
@@ -416,7 +416,7 @@
 <hr>
 <p>先看一下效果<br><img src="/2019/05/05/微信小程序导航栏选中高亮效果实现/nav.gif" alt="loading..."></p>
 <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>导航栏选中的项做高亮显示，这里假设导航栏有四项，分别为可接单，已接单，维修中，已完成。默认选中可接单，未选中的为灰色，选中为蓝色，字体加粗且字体下方有滑动条。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>为四个选项各自增加一个key值，这里用 <code>state</code> 表示当前状态，分别表示为 <code>UNORDER</code>, <code>ALREADY</code>, <code>ORDERING</code>, <code>SUCCESS</code> 。在wxml中给每一项通过 <code>data-xxx</code> 定义一个属性即是当前项的状态。在js中点击事件通过 <code>e.currentTarget.xxx</code> 来获取，再通过当前点击的state与四个选项匹配，匹配上的做高亮显示。下面看代码实现。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>为四个选项各自增加一个key值，这里用 <code>state</code> 表示当前状态，分别表示为 <code>UNORDER</code>, <code>ALREADY</code>, <code>ORDERING</code>, <code>SUCCESS</code> 。在wxml中给每一项通过 <code>data-xxx</code> 定义一个属性即是当前项的状态。在js中点击事件通过 <code>e.currentTarget.dataset.xxx</code> 来获取，再通过当前点击的state与四个选项匹配，匹配上的做高亮显示。下面看代码实现。</p>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><blockquote>
 <p>wxml</p>
 </blockquote>
@@ -430,7 +430,7 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    navList: [</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'可接单'</span>,</span><br><span class="line">        state: <span class="string">'UNORDER'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'已接单'</span>,</span><br><span class="line">        state: <span class="string">'ALREADY'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'维修中'</span>,</span><br><span class="line">        state: <span class="string">'ORDERING'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'已完成'</span>,</span><br><span class="line">        state: <span class="string">'SUCCESS'</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">    state: <span class="string">'UNORDER'</span>, <span class="comment">// 导航默认状态</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 接单状态选择</span></span><br><span class="line">  handleChoose: <span class="function">(<span class="params">&#123;currentTarget&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;state&#125; = currentTarget.dataset;</span><br><span class="line">    <span class="keyword">const</span> &#123; navList &#125; = page.data;</span><br><span class="line">    page.setData(&#123;</span><br><span class="line">      navList,</span><br><span class="line">      state</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
-<p>像这种常用的效果封装成组件较好，在页面调用时只需要传一个导航数组列表即可，以后也不必重复写了，下一篇文章写如何自定义组件。</p>
+<p>像这种常用的效果抽离成组件较好，在页面调用时只需要传一个导航数组列表即可，以后也不必重复写了，下一篇文章写如何自定义组件。</p>
 </blockquote>
 
       
