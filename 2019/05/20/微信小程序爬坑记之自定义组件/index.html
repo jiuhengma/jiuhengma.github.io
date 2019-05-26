@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微信小程序,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 一个项目中对于频繁使用的场景，出于代码的可读性，扩展性以及后期维护的考虑，最好将这部分代码抽离成组件，便于复用，本篇文章将把上篇内容中的导航条定义成组件。点我查看官方文档">
+<meta name="keywords" content="微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序爬坑记之自定义组件Component">
+<meta property="og:url" content="http://rosesnow.top/2019/05/20/微信小程序爬坑记之自定义组件/index.html">
+<meta property="og:site_name" content="枪在手，跟我走">
+<meta property="og:description" content="前言 一个项目中对于频繁使用的场景，出于代码的可读性，扩展性以及后期维护的考虑，最好将这部分代码抽离成组件，便于复用，本篇文章将把上篇内容中的导航条定义成组件。点我查看官方文档">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://rosesnow.top/2019/05/20/微信小程序爬坑记之自定义组件/shouye.png">
+<meta property="og:image" content="http://rosesnow.top/2019/05/20/微信小程序爬坑记之自定义组件/mulu.png">
+<meta property="og:updated_time" content="2019-05-26T14:56:55.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序爬坑记之自定义组件Component">
+<meta name="twitter:description" content="前言 一个项目中对于频繁使用的场景，出于代码的可读性，扩展性以及后期维护的考虑，最好将这部分代码抽离成组件，便于复用，本篇文章将把上篇内容中的导航条定义成组件。点我查看官方文档">
+<meta name="twitter:image" content="http://rosesnow.top/2019/05/20/微信小程序爬坑记之自定义组件/shouye.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://rosesnow.top/2019/05/20/微信小程序爬坑记之自定义组件/">
+
+
+
+
+
+  <title>微信小程序爬坑记之自定义组件Component | 枪在手，跟我走</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/RoseSnow" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">枪在手，跟我走</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">初极狭，才通人，复行数十步，豁然开朗</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user 表示关于我"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            生活
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rosesnow.top/2019/05/20/微信小程序爬坑记之自定义组件/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RoseSnow">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枪在手，跟我走">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信小程序爬坑记之自定义组件Component</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-20T14:10:07+08:00">
+                2019-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  942 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2019/05/20/微信小程序爬坑记之自定义组件/shouye.png" alt="loading"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>一个项目中对于频繁使用的场景，出于代码的可读性，扩展性以及后期维护的考虑，最好将这部分代码抽离成组件，便于复用，本篇文章将把上篇内容中的导航条定义成组件。<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Component.html" target="_blank" rel="noopener"><strong>点我查看官方文档</strong></a></p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<p>组件定义与普通页面是差不多的，也是由 <code>wxml, wxss, js, json</code> 四个文件组成。首先在项目src目录下创建components文件夹，作为放置组件的文件，在该文件夹在创建一个selection-bar文件作为导航组件，如下图<img src="/2019/05/20/微信小程序爬坑记之自定义组件/mulu.png" alt="loading..."></p>
+<h2 id="编写组件页面"><a href="#编写组件页面" class="headerlink" title="编写组件页面"></a>编写组件页面</h2><blockquote>
+<p>wxml</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 导航选择栏 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"nav row-around"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123; navList &#125;&#125;"</span> <span class="attr">wx:key</span>=<span class="string">"&#123;&#123; item.state &#125;&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"item text-center"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span>=<span class="string">"&#123;&#123; item.state === state ? 'select' : '' &#125;&#125;"</span> <span class="attr">data-state</span>=<span class="string">"&#123;&#123; item.state &#125;&#125;"</span> <span class="attr">bind:tap</span>=<span class="string">"handleChoose"</span>&gt;</span>&#123;&#123; item.name &#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>wxss</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.nav</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">rpx</span>(90);</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="built_in">rpx</span>(2) solid <span class="number">#ccc</span>;</span><br><span class="line"></span><br><span class="line">  .item &#123;</span><br><span class="line">    <span class="selector-tag">width</span>: 20%;</span><br><span class="line">    <span class="selector-tag">height</span>: <span class="selector-tag">rpx</span>(32);</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-id">#AEAEAE</span>;</span><br><span class="line">    <span class="selector-tag">font-size</span>: <span class="selector-tag">rpx</span>(30);</span><br><span class="line">    <span class="selector-tag">position</span>: <span class="selector-tag">relative</span>;</span><br><span class="line">    <span class="selector-tag">z-index</span>: 99;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.select</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="built_in">rpx</span>(32);</span><br><span class="line">    <span class="attribute">color</span>: white;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">600</span>;</span><br><span class="line"></span><br><span class="line">    &amp;::before &#123;</span><br><span class="line">      content: '';</span><br><span class="line">      <span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line">      <span class="selector-tag">left</span>: 0;</span><br><span class="line">      <span class="selector-tag">right</span>: 0;</span><br><span class="line">      <span class="selector-tag">top</span>: 0;</span><br><span class="line">      <span class="selector-tag">margin</span>: <span class="selector-tag">auto</span>;</span><br><span class="line">      <span class="selector-tag">margin-top</span>: <span class="selector-tag">rpx</span>(55);</span><br><span class="line">      <span class="selector-tag">width</span>: 85%;</span><br><span class="line">      <span class="selector-tag">border-bottom</span>: <span class="selector-tag">rpx</span>(8) <span class="selector-tag">solid</span> <span class="selector-tag">white</span>;</span><br><span class="line">      <span class="selector-tag">border-radius</span>: <span class="selector-tag">rpx</span>(4);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="组件js交互"><a href="#组件js交互" class="headerlink" title="组件js交互"></a>组件js交互</h2><ol>
+<li><strong>properties</strong>是组件的对外属性，属性设置中可包含三个字段,type 表示属性类型、 value 表示属性初始值、 observer 表示属性值被更改时的响应函数。这里定义的 <code>navList</code> 是页面中渲染的导航列表是一个数组， <code>state</code>表示当前选中的状态。</li>
+<li><strong>data</strong>是组件内部的数据，和 properties 一同用于组件的模板渲染。</li>
+<li><strong>methods</strong>中定义组件的方法，包括事件响应函数和任意的自定义方法，这里定义的 <code>handleChoose</code> 方法用于导航的选择，要想在其他页面即引入该组件的页面用该方法，需要使用 triggerEvent 方法，指定事件名、detail对象和事件选项。比如这里指定的事件名为 state detail对象是state即选中的导航状态。</li>
+</ol>
+<blockquote>
+<p>js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Component(&#123;</span><br><span class="line">  properties: &#123;</span><br><span class="line">    navList: &#123;</span><br><span class="line">      type: <span class="built_in">Array</span>,</span><br><span class="line">      value: [],</span><br><span class="line">    &#125;,</span><br><span class="line">    state: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      value: <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data: &#123;&#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    handleChoose(&#123;currentTarget&#125;) &#123;</span><br><span class="line">      <span class="keyword">const</span> &#123;state&#125; = currentTarget.dataset;</span><br><span class="line">      <span class="keyword">this</span>.triggerEvent(<span class="string">'state'</span>, &#123;state&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// Lifecycle method.</span></span><br><span class="line">  created() &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  attached() &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  ready() &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  moved() &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  detached() &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="在其他页面引入该组件"><a href="#在其他页面引入该组件" class="headerlink" title="在其他页面引入该组件"></a>在其他页面引入该组件</h2><p>上述已经把组件的基本功能定义好了，下一步就是在页面引入，只需要在要使用的页面的json文件中的 <strong>usingComponents</strong> 对象中 加上引用组件名称及其路径 如下，这样就可以在该页面中使用组件了。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"navigationBarTitleText"</span>: <span class="string">"引入组件的页面"</span>,</span><br><span class="line">  <span class="string">"usingComponents"</span>: &#123;</span><br><span class="line">    <span class="string">"selection-bar"</span>: <span class="string">"/components/selection-bar/index"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="页面中组件的使用"><a href="#页面中组件的使用" class="headerlink" title="页面中组件的使用"></a>页面中组件的使用</h2><p>在页面的合适位置使用组件，该组件有自定义的两个属性，navList 和 state，还有一个方法 handleChoose；navList是定义在data的航行数组的名字，state可以给定一个初始状态。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"page"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 页面导航 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">selection-bar</span> <span class="attr">navList</span>=<span class="string">"&#123;&#123; navList &#125;&#125;"</span> <span class="attr">state</span>=<span class="string">"&#123;&#123; state &#125;&#125;"</span> <span class="attr">bind:state</span>=<span class="string">"handleChoose"</span>&gt;</span><span class="tag">&lt;/<span class="name">selection-bar</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    navList: [</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'导航一'</span>,</span><br><span class="line">        state: <span class="string">'ONE'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'导航二'</span>,</span><br><span class="line">        state: <span class="string">'TWO'</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    state: <span class="string">'ONE'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 选择竞猜/实时互动</span></span><br><span class="line">  handleChoose: <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 此处通过e.detail可以获取组件传来的函数监听对象即state</span></span><br><span class="line">    <span class="keyword">const</span> &#123;state&#125; = e.detail;</span><br><span class="line">    <span class="keyword">if</span> (state === page.data.state) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    page.setData(&#123;</span><br><span class="line">      state</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>组件页面和普通页面没什么区别，主要是父子组件之间的事件的传递，是在子组件中通过this.triggerEvent(‘signEvent’, { }) 来发送，然后在父组件的js文件中来响应事件。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得文章不错，请我吃根辣条吧~~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wxpay.png" alt="RoseSnow 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="RoseSnow 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/05/微信小程序导航栏选中高亮效果实现/" rel="next" title="微信小程序爬坑记之导航栏选中高亮滚动条实现">
+                <i class="fa fa-chevron-left"></i> 微信小程序爬坑记之导航栏选中高亮滚动条实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="RoseSnow">
+            
+              <p class="site-author-name" itemprop="name">RoseSnow</p>
+              <p class="site-description motion-element" itemprop="description">初极狭，才通人，复行数十步，豁然开朗</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RoseSnow" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="number_nine@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="w3school" target="_blank">w3school</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰官网" target="_blank">廖雪峰官网</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写组件页面"><span class="nav-text">编写组件页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件js交互"><span class="nav-text">组件js交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在其他页面引入该组件"><span class="nav-text">在其他页面引入该组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面中组件的使用"><span class="nav-text">页面中组件的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <div class="theme-info">
+      <span class="post-count">本站总字数: 35k</span>
+    </div>
+  
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站阅读量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+</body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</html>
